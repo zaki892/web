@@ -44,7 +44,235 @@
 </head>
 <body class="text-gray-100 min-h-screen">
     
-     ... existing code ... 
+    <!-- Navigation -->
+    <nav class="bg-dark-lighter border-b border-dark-border sticky top-0 z-50 backdrop-blur-lg bg-opacity-90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Sistem Pakar Jurusan</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" class="text-gray-300 hover:text-white transition-colors">Beranda</a>
+                    <a href="#test" class="text-gray-300 hover:text-white transition-colors">Tes Minat</a>
+                    <a href="#about" class="text-gray-300 hover:text-white transition-colors">Tentang</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition-colors">Kontak</a>
+                </div>
+                
+                <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-dark-lighter border-t border-dark-border">
+            <div class="px-4 py-3 space-y-3">
+                <a href="#home" class="block text-gray-300 hover:text-white transition-colors">Beranda</a>
+                <a href="#test" class="block text-gray-300 hover:text-white transition-colors">Tes Minat</a>
+                <a href="#about" class="block text-gray-300 hover:text-white transition-colors">Tentang</a>
+                <a href="#contact" class="block text-gray-300 hover:text-white transition-colors">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="py-12 md:py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent leading-tight">
+                    Temukan Jurusan Kuliah Impianmu
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                    Sistem pakar berbasis AI yang membantu menentukan jurusan kuliah terbaik berdasarkan minat, bakat, dan kepribadianmu
+                </p>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12">
+                <div class="bg-dark-lighter border border-dark-border rounded-xl p-6 text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2">50+</div>
+                    <div class="text-sm text-gray-400">Jurusan</div>
+                </div>
+                <div class="bg-dark-lighter border border-dark-border rounded-xl p-6 text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-secondary mb-2">95%</div>
+                    <div class="text-sm text-gray-400">Akurasi</div>
+                </div>
+                <div class="bg-dark-lighter border border-dark-border rounded-xl p-6 text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2">10K+</div>
+                    <div class="text-sm text-gray-400">Pengguna</div>
+                </div>
+                <div class="bg-dark-lighter border border-dark-border rounded-xl p-6 text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-secondary mb-2">4.9</div>
+                    <div class="text-sm text-gray-400">Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Test Section -->
+    <section id="test" class="py-12 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-dark-lighter border border-dark-border rounded-2xl p-6 md:p-8 glow">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">Tes Minat & Bakat</h2>
+                
+                <form id="testForm" class="space-y-6">
+                    <!-- Personal Info -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold text-primary">Informasi Pribadi</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Nama Lengkap</label>
+                                <input type="text" id="name" required class="w-full px-4 py-3 bg-dark border border-dark-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-white transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Usia</label>
+                                <input type="number" id="age" required min="15" max="30" class="w-full px-4 py-3 bg-dark border border-dark-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-white transition-all">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interest Questions -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold text-primary">Bidang Minat</h3>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Mata pelajaran favorit?</label>
+                            <select id="subject" required class="w-full px-4 py-3 bg-dark border border-dark-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-white transition-all">
+                                <option value="">Pilih mata pelajaran</option>
+                                <option value="matematika">Matematika</option>
+                                <option value="fisika">Fisika</option>
+                                <option value="kimia">Kimia</option>
+                                <option value="biologi">Biologi</option>
+                                <option value="bahasa">Bahasa & Sastra</option>
+                                <option value="sejarah">Sejarah & Sosial</option>
+                                <option value="ekonomi">Ekonomi</option>
+                                <option value="seni">Seni & Desain</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Aktivitas yang paling kamu sukai?</label>
+                            <select id="activity" required class="w-full px-4 py-3 bg-dark border border-dark-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-white transition-all">
+                                <option value="">Pilih aktivitas</option>
+                                <option value="coding">Coding & Programming</option>
+                                <option value="design">Desain Grafis</option>
+                                <option value="writing">Menulis & Bercerita</option>
+                                <option value="research">Riset & Eksperimen</option>
+                                <option value="business">Bisnis & Kewirausahaan</option>
+                                <option value="helping">Membantu Orang Lain</option>
+                                <option value="creating">Membuat Karya Seni</option>
+                                <option value="analyzing">Menganalisis Data</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Tipe kepribadian?</label>
+                            <select id="personality" required class="w-full px-4 py-3 bg-dark border border-dark-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-white transition-all">
+                                <option value="">Pilih tipe kepribadian</option>
+                                <option value="analytical">Analitis & Logis</option>
+                                <option value="creative">Kreatif & Inovatif</option>
+                                <option value="social">Sosial & Komunikatif</option>
+                                <option value="practical">Praktis & Terorganisir</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Lingkungan kerja ideal?</label>
+                            <select id="environment" required class="w-full px-4 py-3 bg-dark border border-dark-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-white transition-all">
+                                <option value="">Pilih lingkungan kerja</option>
+                                <option value="office">Kantor & Indoor</option>
+                                <option value="outdoor">Lapangan & Outdoor</option>
+                                <option value="lab">Laboratorium</option>
+                                <option value="creative">Studio Kreatif</option>
+                                <option value="remote">Remote & Fleksibel</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white font-semibold py-4 rounded-lg hover:opacity-90 transition-all transform hover:scale-[1.02] active:scale-[0.98]">
+                        Analisis Sekarang
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="py-12 px-4 hidden">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">Rekomendasi Jurusan Untukmu</h2>
+            
+            <div id="resultCards" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Results will be inserted here -->
+            </div>
+
+            <div class="text-center mt-8">
+                <button onclick="resetTest()" class="px-8 py-3 bg-dark-lighter border border-dark-border text-white rounded-lg hover:bg-dark transition-all">
+                    Ulangi Tes
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-12 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-dark-lighter border border-dark-border rounded-2xl p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">Tentang Sistem Pakar</h2>
+                <div class="space-y-4 text-gray-300 leading-relaxed">
+                    <p>Sistem Pakar Rekomendasi Jurusan adalah platform berbasis kecerdasan buatan yang dirancang untuk membantu siswa SMA dalam menentukan pilihan jurusan kuliah yang tepat.</p>
+                    <p>Dengan menganalisis minat, bakat, kepribadian, dan preferensi lingkungan kerja, sistem kami memberikan rekomendasi jurusan yang paling sesuai dengan profil Anda.</p>
+                    <div class="grid md:grid-cols-3 gap-4 mt-6">
+                        <div class="text-center p-4 bg-dark rounded-lg">
+                            <div class="text-3xl mb-2">🎯</div>
+                            <div class="font-semibold">Akurat</div>
+                        </div>
+                        <div class="text-center p-4 bg-dark rounded-lg">
+                            <div class="text-3xl mb-2">⚡</div>
+                            <div class="font-semibold">Cepat</div>
+                        </div>
+                        <div class="text-center p-4 bg-dark rounded-lg">
+                            <div class="text-3xl mb-2">🔒</div>
+                            <div class="font-semibold">Aman</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-12 px-4 mb-12">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-dark-lighter border border-dark-border rounded-2xl p-6 md:p-8 text-center">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4">Butuh Bantuan?</h2>
+                <p class="text-gray-400 mb-6">Tim kami siap membantu Anda dalam proses pemilihan jurusan</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="mailto:info@sistempakar.com" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-opacity-90 transition-all">
+                        Email Kami
+                    </a>
+                    <a href="tel:+6281234567890" class="px-6 py-3 bg-dark border border-dark-border text-white rounded-lg hover:bg-opacity-90 transition-all">
+                        Hubungi Kami
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-lighter border-t border-dark-border py-8 px-4">
+        <div class="max-w-7xl mx-auto text-center text-gray-400">
+            <p>&copy; 2025 Sistem Pakar Jurusan. Semua hak dilindungi.</p>
+        </div>
+    </footer>
 
     <script>
         // Mobile menu toggle
@@ -55,209 +283,79 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // <CHANGE> Implementing SAW (Simple Additive Weighting) Method
-        
-        // Define criteria weights (total must be 1.0)
-        const criteriaWeights = {
-            subject: 0.30,      // 30% - Mata pelajaran favorit
-            activity: 0.25,     // 25% - Aktivitas yang disukai
-            personality: 0.25,  // 25% - Tipe kepribadian
-            environment: 0.20   // 20% - Lingkungan kerja
-        };
-
-        // Define all majors with their criteria scores (1-5 scale)
-        const majorsData = [
-            {
+        // Expert system logic
+        const majorDatabase = {
+            'matematika-coding-analytical-office': {
                 name: 'Teknik Informatika',
-                icon: '💻',
-                description: 'Mempelajari pemrograman, algoritma, dan pengembangan software',
-                careers: ['Software Engineer', 'Data Scientist', 'AI Engineer', 'Full Stack Developer'],
-                criteria: {
-                    subject: { matematika: 5, fisika: 4, kimia: 2, biologi: 2, bahasa: 2, sejarah: 2, ekonomi: 3, seni: 3 },
-                    activity: { coding: 5, design: 3, writing: 2, research: 4, business: 3, helping: 2, creating: 3, analyzing: 5 },
-                    personality: { analytical: 5, creative: 3, social: 2, practical: 4 },
-                    environment: { office: 5, outdoor: 1, lab: 3, creative: 3, remote: 5 }
-                }
+                match: 95,
+                description: 'Cocok untuk kamu yang suka matematika, coding, dan berpikir logis',
+                careers: ['Software Engineer', 'Data Scientist', 'AI Engineer'],
+                icon: '💻'
             },
-            {
+            'matematika-coding-analytical-remote': {
                 name: 'Sistem Informasi',
-                icon: '📊',
-                description: 'Menggabungkan teknologi informasi dengan manajemen bisnis',
-                careers: ['Business Analyst', 'IT Consultant', 'Project Manager', 'System Analyst'],
-                criteria: {
-                    subject: { matematika: 4, fisika: 3, kimia: 2, biologi: 2, bahasa: 3, sejarah: 2, ekonomi: 5, seni: 2 },
-                    activity: { coding: 4, design: 3, writing: 3, research: 3, business: 5, helping: 3, creating: 3, analyzing: 5 },
-                    personality: { analytical: 5, creative: 3, social: 4, practical: 5 },
-                    environment: { office: 5, outdoor: 1, lab: 2, creative: 3, remote: 5 }
-                }
+                match: 92,
+                description: 'Menggabungkan teknologi dan bisnis untuk solusi digital',
+                careers: ['Business Analyst', 'IT Consultant', 'Project Manager'],
+                icon: '📊'
             },
-            {
+            'fisika-research-analytical-lab': {
                 name: 'Teknik Elektro',
-                icon: '⚡',
-                description: 'Mempelajari sistem kelistrikan, elektronika, dan telekomunikasi',
-                careers: ['Electrical Engineer', 'Robotics Engineer', 'IoT Specialist', 'Power System Engineer'],
-                criteria: {
-                    subject: { matematika: 5, fisika: 5, kimia: 3, biologi: 2, bahasa: 2, sejarah: 1, ekonomi: 2, seni: 2 },
-                    activity: { coding: 4, design: 3, writing: 2, research: 5, business: 2, helping: 2, creating: 4, analyzing: 4 },
-                    personality: { analytical: 5, creative: 3, social: 2, practical: 5 },
-                    environment: { office: 3, outdoor: 3, lab: 5, creative: 2, remote: 3 }
-                }
+                match: 90,
+                description: 'Untuk kamu yang tertarik dengan elektronika dan sistem kelistrikan',
+                careers: ['Electrical Engineer', 'Robotics Engineer', 'IoT Specialist'],
+                icon: '⚡'
             },
-            {
+            'seni-design-creative-creative': {
                 name: 'Desain Komunikasi Visual',
-                icon: '🎨',
-                description: 'Menciptakan komunikasi visual melalui desain grafis dan multimedia',
-                careers: ['Graphic Designer', 'UI/UX Designer', 'Art Director', 'Motion Designer'],
-                criteria: {
-                    subject: { matematika: 2, fisika: 2, kimia: 1, biologi: 2, bahasa: 3, sejarah: 3, ekonomi: 3, seni: 5 },
-                    activity: { coding: 2, design: 5, writing: 3, research: 2, business: 3, helping: 3, creating: 5, analyzing: 3 },
-                    personality: { analytical: 2, creative: 5, social: 4, practical: 3 },
-                    environment: { office: 4, outdoor: 2, lab: 1, creative: 5, remote: 5 }
-                }
+                match: 93,
+                description: 'Sempurna untuk jiwa kreatif yang suka desain dan seni visual',
+                careers: ['Graphic Designer', 'UI/UX Designer', 'Art Director'],
+                icon: '🎨'
             },
-            {
+            'bahasa-writing-creative-creative': {
                 name: 'Sastra & Komunikasi',
-                icon: '✍️',
-                description: 'Mempelajari bahasa, sastra, dan strategi komunikasi efektif',
-                careers: ['Content Writer', 'Journalist', 'Public Relations', 'Editor', 'Copywriter'],
-                criteria: {
-                    subject: { matematika: 2, fisika: 1, kimia: 1, biologi: 2, bahasa: 5, sejarah: 4, ekonomi: 3, seni: 4 },
-                    activity: { coding: 1, design: 3, writing: 5, research: 4, business: 3, helping: 4, creating: 5, analyzing: 3 },
-                    personality: { analytical: 3, creative: 5, social: 5, practical: 3 },
-                    environment: { office: 4, outdoor: 3, lab: 1, creative: 5, remote: 5 }
-                }
+                match: 91,
+                description: 'Ideal untuk kamu yang berbakat dalam menulis dan berkomunikasi',
+                careers: ['Content Writer', 'Journalist', 'Public Relations'],
+                icon: '✍️'
             },
-            {
+            'ekonomi-business-practical-office': {
                 name: 'Manajemen Bisnis',
-                icon: '💼',
-                description: 'Mempelajari strategi bisnis, manajemen, dan kewirausahaan',
-                careers: ['Business Manager', 'Entrepreneur', 'Marketing Manager', 'Operations Manager'],
-                criteria: {
-                    subject: { matematika: 4, fisika: 2, kimia: 2, biologi: 2, bahasa: 3, sejarah: 3, ekonomi: 5, seni: 3 },
-                    activity: { coding: 2, design: 3, writing: 3, research: 3, business: 5, helping: 4, creating: 4, analyzing: 5 },
-                    personality: { analytical: 4, creative: 4, social: 5, practical: 5 },
-                    environment: { office: 5, outdoor: 3, lab: 1, creative: 4, remote: 4 }
-                }
+                match: 94,
+                description: 'Untuk calon entrepreneur dan pemimpin bisnis masa depan',
+                careers: ['Business Manager', 'Entrepreneur', 'Marketing Manager'],
+                icon: '💼'
             },
-            {
+            'biologi-research-analytical-lab': {
                 name: 'Kedokteran',
-                icon: '⚕️',
-                description: 'Mempelajari ilmu kesehatan dan pengobatan untuk membantu pasien',
-                careers: ['Dokter Umum', 'Dokter Spesialis', 'Peneliti Medis', 'Dokter Bedah'],
-                criteria: {
-                    subject: { matematika: 3, fisika: 3, kimia: 4, biologi: 5, bahasa: 3, sejarah: 2, ekonomi: 2, seni: 2 },
-                    activity: { coding: 2, design: 2, writing: 3, research: 5, business: 2, helping: 5, creating: 2, analyzing: 4 },
-                    personality: { analytical: 5, creative: 3, social: 5, practical: 5 },
-                    environment: { office: 3, outdoor: 2, lab: 5, creative: 2, remote: 1 }
-                }
+                match: 96,
+                description: 'Untuk kamu yang ingin membantu orang lain melalui ilmu kesehatan',
+                careers: ['Dokter', 'Peneliti Medis', 'Spesialis'],
+                icon: '⚕️'
             },
-            {
+            'kimia-research-analytical-lab': {
                 name: 'Farmasi',
-                icon: '💊',
-                description: 'Mempelajari obat-obatan, formulasi, dan pelayanan kefarmasian',
-                careers: ['Apoteker', 'Research Scientist', 'Quality Control', 'Regulatory Affairs'],
-                criteria: {
-                    subject: { matematika: 3, fisika: 3, kimia: 5, biologi: 4, bahasa: 2, sejarah: 2, ekonomi: 3, seni: 2 },
-                    activity: { coding: 2, design: 2, writing: 3, research: 5, business: 3, helping: 5, creating: 3, analyzing: 4 },
-                    personality: { analytical: 5, creative: 3, social: 4, practical: 5 },
-                    environment: { office: 3, outdoor: 2, lab: 5, creative: 2, remote: 2 }
-                }
+                match: 89,
+                description: 'Menggabungkan kimia dan kesehatan untuk membuat obat-obatan',
+                careers: ['Apoteker', 'Research Scientist', 'Quality Control'],
+                icon: '💊'
             },
-            {
+            'sejarah-research-social-office': {
                 name: 'Ilmu Hukum',
-                icon: '⚖️',
-                description: 'Mempelajari sistem hukum, perundangan, dan keadilan',
-                careers: ['Lawyer', 'Legal Consultant', 'Judge', 'Notaris', 'Corporate Legal'],
-                criteria: {
-                    subject: { matematika: 3, fisika: 2, kimia: 2, biologi: 2, bahasa: 4, sejarah: 5, ekonomi: 4, seni: 2 },
-                    activity: { coding: 2, design: 2, writing: 5, research: 5, business: 4, helping: 5, creating: 3, analyzing: 5 },
-                    personality: { analytical: 5, creative: 3, social: 5, practical: 4 },
-                    environment: { office: 5, outdoor: 2, lab: 1, creative: 2, remote: 3 }
-                }
+                match: 88,
+                description: 'Untuk kamu yang tertarik dengan keadilan dan sistem hukum',
+                careers: ['Lawyer', 'Legal Consultant', 'Judge'],
+                icon: '⚖️'
             },
-            {
+            'default': {
                 name: 'Psikologi',
-                icon: '🧠',
-                description: 'Memahami perilaku manusia dan proses mental',
-                careers: ['Psikolog Klinis', 'HR Specialist', 'Counselor', 'Organizational Psychologist'],
-                criteria: {
-                    subject: { matematika: 3, fisika: 2, kimia: 2, biologi: 4, bahasa: 4, sejarah: 3, ekonomi: 3, seni: 3 },
-                    activity: { coding: 2, design: 2, writing: 4, research: 5, business: 3, helping: 5, creating: 3, analyzing: 5 },
-                    personality: { analytical: 4, creative: 4, social: 5, practical: 4 },
-                    environment: { office: 5, outdoor: 2, lab: 3, creative: 3, remote: 4 }
-                }
-            },
-            {
-                name: 'Arsitektur',
-                icon: '🏛️',
-                description: 'Merancang dan mendesain bangunan serta ruang lingkungan',
-                careers: ['Arsitek', 'Interior Designer', 'Urban Planner', '3D Visualizer'],
-                criteria: {
-                    subject: { matematika: 4, fisika: 4, kimia: 2, biologi: 2, bahasa: 3, sejarah: 3, ekonomi: 3, seni: 5 },
-                    activity: { coding: 2, design: 5, writing: 2, research: 3, business: 3, helping: 3, creating: 5, analyzing: 4 },
-                    personality: { analytical: 4, creative: 5, social: 3, practical: 5 },
-                    environment: { office: 4, outdoor: 4, lab: 2, creative: 5, remote: 3 }
-                }
-            },
-            {
-                name: 'Akuntansi',
-                icon: '📈',
-                description: 'Mempelajari pencatatan, pelaporan, dan analisis keuangan',
-                careers: ['Akuntan Publik', 'Tax Consultant', 'Auditor', 'Financial Analyst'],
-                criteria: {
-                    subject: { matematika: 5, fisika: 2, kimia: 2, biologi: 2, bahasa: 3, sejarah: 2, ekonomi: 5, seni: 2 },
-                    activity: { coding: 3, design: 2, writing: 3, research: 3, business: 5, helping: 3, creating: 2, analyzing: 5 },
-                    personality: { analytical: 5, creative: 2, social: 3, practical: 5 },
-                    environment: { office: 5, outdoor: 1, lab: 1, creative: 2, remote: 4 }
-                }
+                match: 85,
+                description: 'Memahami perilaku manusia dan membantu orang lain',
+                careers: ['Psikolog', 'HR Specialist', 'Counselor'],
+                icon: '🧠'
             }
-        ];
-
-        // SAW Method Implementation
-        function calculateSAW(formData) {
-            console.log('[v0] Starting SAW calculation with form data:', formData);
-            
-            const results = [];
-
-            // Calculate score for each major
-            majorsData.forEach(major => {
-                let totalScore = 0;
-
-                // Calculate weighted score for each criterion
-                for (let criterion in criteriaWeights) {
-                    const userChoice = formData[criterion];
-                    const criterionScore = major.criteria[criterion][userChoice] || 0;
-                    
-                    // Normalize score (already on 1-5 scale, normalize to 0-1)
-                    const normalizedScore = criterionScore / 5;
-                    
-                    // Apply weight
-                    const weightedScore = normalizedScore * criteriaWeights[criterion];
-                    
-                    totalScore += weightedScore;
-                    
-                    console.log(`[v0] ${major.name} - ${criterion}: score=${criterionScore}, normalized=${normalizedScore.toFixed(2)}, weighted=${weightedScore.toFixed(3)}`);
-                }
-
-                // Convert to percentage
-                const matchPercentage = Math.round(totalScore * 100);
-
-                results.push({
-                    ...major,
-                    score: totalScore,
-                    match: matchPercentage
-                });
-
-                console.log(`[v0] ${major.name} - Total Score: ${totalScore.toFixed(3)}, Match: ${matchPercentage}%`);
-            });
-
-            // Sort by score (descending)
-            results.sort((a, b) => b.score - a.score);
-
-            console.log('[v0] Top 3 recommendations:', results.slice(0, 3).map(r => `${r.name} (${r.match}%)`));
-
-            return results.slice(0, 3); // Return top 3
-        }
+        };
 
         // Form submission
         document.getElementById('testForm').addEventListener('submit', function(e) {
@@ -272,8 +370,11 @@
                 environment: document.getElementById('environment').value
             };
 
-            // <CHANGE> Using SAW method for recommendations
-            const recommendations = calculateSAW(formData);
+            // Generate recommendation key
+            const key = `${formData.subject}-${formData.activity}-${formData.personality}-${formData.environment}`;
+            
+            // Get recommendations
+            const recommendations = getRecommendations(key, formData);
             
             // Display results
             displayResults(recommendations, formData.name);
@@ -281,6 +382,43 @@
             // Scroll to results
             document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
         });
+
+        function getRecommendations(key, formData) {
+            const recommendations = [];
+            
+            // Try to find exact match
+            if (majorDatabase[key]) {
+                recommendations.push(majorDatabase[key]);
+            }
+            
+            // Add related majors based on subject
+            const subjectMajors = {
+                'matematika': ['Teknik Informatika', 'Sistem Informasi', 'Matematika'],
+                'fisika': ['Teknik Elektro', 'Teknik Mesin', 'Fisika'],
+                'kimia': ['Farmasi', 'Teknik Kimia', 'Kimia'],
+                'biologi': ['Kedokteran', 'Biologi', 'Kesehatan Masyarakat'],
+                'bahasa': ['Sastra & Komunikasi', 'Pendidikan Bahasa', 'Jurnalistik'],
+                'sejarah': ['Ilmu Hukum', 'Hubungan Internasional', 'Sejarah'],
+                'ekonomi': ['Manajemen Bisnis', 'Ekonomi', 'Akuntansi'],
+                'seni': ['Desain Komunikasi Visual', 'Seni Rupa', 'Arsitektur']
+            };
+
+            // Add more recommendations
+            Object.values(majorDatabase).forEach(major => {
+                if (recommendations.length < 3 && !recommendations.includes(major)) {
+                    if (major.name !== 'default') {
+                        recommendations.push(major);
+                    }
+                }
+            });
+
+            // Ensure we have at least 3 recommendations
+            while (recommendations.length < 3) {
+                recommendations.push(majorDatabase.default);
+            }
+
+            return recommendations.slice(0, 3);
+        }
 
         function displayResults(recommendations, name) {
             const resultsSection = document.getElementById('results');
@@ -294,14 +432,8 @@
                 card.className = 'result-card bg-dark-lighter border border-dark-border rounded-xl p-6 hover:border-primary transition-all';
                 card.style.animationDelay = `${index * 0.1}s`;
                 
-                // <CHANGE> Added ranking badge
-                const rankBadge = index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉';
-                
                 card.innerHTML = `
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="text-4xl">${major.icon}</div>
-                        <div class="text-2xl">${rankBadge}</div>
-                    </div>
+                    <div class="text-4xl mb-4">${major.icon}</div>
                     <div class="flex items-center justify-between mb-3">
                         <h3 class="text-xl font-bold">${major.name}</h3>
                         <span class="px-3 py-1 bg-primary bg-opacity-20 text-primary rounded-full text-sm font-semibold">${major.match}% Match</span>
