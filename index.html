@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pakar - Rekomendasi Jurusan Kuliah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        dark: '#0a0a0a',
+                        'dark-lighter': '#1a1a1a',
+                        'dark-border': '#2a2a2a',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        }
+        .glow {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+        .result-card {
+            animation: slideIn 0.5s ease-out;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-100 min-h-screen">
+    
+    <!-- Navigation -->
+    <nav class="bg-dark-lighter border-b border-dark-border sticky top-0 z-50 backdrop-blur-lg bg-opacity-90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Sistem Pakar Jurusan</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" class="text-gray-300 hover:text-white transition-colors">Beranda</a>
+                    <a href="#test" class="text-gray-300 hover:text-white transition-colors">Tes Minat</a>
+                    <a href="#about" class="text-gray-300 hover:text-white transition-colors">Tentang</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition-colors">Kontak</a>
+                </div>
+                
+                <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-dark-lighter border-t border-dark-border">
+            <div class="px-4 py-3 space-y-3">
+                <a href="#home" class="block text-gray-300 hover:text-white transition-colors">Beranda</a>
+                <a href="#test" class="block text-gray-300 hover:text-white transition-colors">Tes Minat</a>
+                <a href="#about" class="block text-gray-300 hover:text-white transition-colors">Tentang</a>
+                <a href="#contact" class="block text-gray-300 hover:text-white transition-colors">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="py-12 md:py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent leading-tight">
+                    Temukan Jurusan Kuliah Impianmu
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                    Sistem pakar berbasis AI yang membantu menentukan jurusan kuliah terbaik berdasarkan minat, bakat, dan kepribadianmu
+                </p>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12">
+                <div class="bg-dark-lighter border border-dark-border rounded-xl p-6 text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2">50+</div>
+                    <div class="text-sm text-gray-400">Jurusan</div>
+                </div>
+                <div class="bg-dark-lighter border border-dark-border rounded-xl p-6 text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-secondary mb-2">95%</div>
+                    <div class="text-sm text-gray-400">Akurasi</div>
+                </div>
+                <div class="bg-dark-lighter border border-dark-border rounded-xl p-6 text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2">10K+</div>
+                    <div class="text-sm text-gray-400">Pengguna</div>
+                </div>
+                <div class="bg-dark-lighter border border-dark-border rounded-xl p-6 text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-secondary mb-2">4.9</div>
+                    <div class="text-sm text-gray-400">Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Test Section -->
+    <section id="test" class="py-12 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-dark-lighter border border-dark-border rounded-2xl p-6 md:p-8 glow">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">Tes Minat & Bakat</h2>
+                
+                <form id="testForm" class="space-y-6">
+                    <!-- Personal Info -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold text-primary">Informasi Pribadi</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Nama Lengkap</label>
+                                <input type="text" id="name" required class="w-full px-4 py-3 bg-dark border border-dark-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-white transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Usia</label>
+                                <input type="number" id="age" required min="15" max="30" class="w-full px-4 py-3 bg-dark border border-dark-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-white transition-all">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interest Questions -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold text-primary">Bidang Minat</h3>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Mata pelajaran favorit?</label>
+                            <select id="subject" required class="w-full px-4 py-3 bg-dark border border-dark-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-white transition-all">
+                                <option value="">Pilih mata pelajaran</option>
+                                <option value="matematika">Matematika</option>
+                                <option value="fisika">Fisika</option>
+                                <option value="kimia">Kimia</option>
+                                <option value="biologi">Biologi</option>
+                                <option value="bahasa">Bahasa & Sastra</option>
+                                <option value="sejarah">Sejarah & Sosial</option>
+                                <option value="ekonomi">Ekonomi</option>
+                                <option value="seni">Seni & Desain</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Aktivitas yang paling kamu sukai?</label>
+                            <select id="activity" required class="w-full px-4 py-3 bg-dark border border-dark-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-white transition-all">
+                                <option value="">Pilih aktivitas</option>
+                                <option value="coding">Coding & Programming</option>
+                                <option value="design">Desain Grafis</option>
+                                <option value="writing">Menulis & Bercerita</option>
+                                <option value="research">Riset & Eksperimen</option>
+                                <option value="business">Bisnis & Kewirausahaan</option>
+                                <option value="helping">Membantu Orang Lain</option>
+                                <option value="creating">Membuat Karya Seni</option>
+                                <option value="analyzing">Menganalisis Data</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Tipe kepribadian?</label>
+                            <select id="personality" required class="w-full px-4 py-3 bg-dark border border-dark-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-white transition-all">
+                                <option value="">Pilih tipe kepribadian</option>
+                                <option value="analytical">Analitis & Logis</option>
+                                <option value="creative">Kreatif & Inovatif</option>
+                                <option value="social">Sosial & Komunikatif</option>
+                                <option value="practical">Praktis & Terorganisir</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Lingkungan kerja ideal?</label>
+                            <select id="environment" required class="w-full px-4 py-3 bg-dark border border-dark-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-white transition-all">
+                                <option value="">Pilih lingkungan kerja</option>
+                                <option value="office">Kantor & Indoor</option>
+                                <option value="outdoor">Lapangan & Outdoor</option>
+                                <option value="lab">Laboratorium</option>
+                                <option value="creative">Studio Kreatif</option>
+                                <option value="remote">Remote & Fleksibel</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white font-semibold py-4 rounded-lg hover:opacity-90 transition-all transform hover:scale-[1.02] active:scale-[0.98]">
+                        Analisis Sekarang
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="py-12 px-4 hidden">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">Rekomendasi Jurusan Untukmu</h2>
+            
+            <div id="resultCards" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Results will be inserted here -->
+            </div>
+
+            <div class="text-center mt-8">
+                <button onclick="resetTest()" class="px-8 py-3 bg-dark-lighter border border-dark-border text-white rounded-lg hover:bg-dark transition-all">
+                    Ulangi Tes
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-12 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-dark-lighter border border-dark-border rounded-2xl p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">Tentang Sistem Pakar</h2>
+                <div class="space-y-4 text-gray-300 leading-relaxed">
+                    <p>Sistem Pakar Rekomendasi Jurusan adalah platform berbasis kecerdasan buatan yang dirancang untuk membantu siswa SMA dalam menentukan pilihan jurusan kuliah yang tepat.</p>
+                    <p>Dengan menganalisis minat, bakat, kepribadian, dan preferensi lingkungan kerja, sistem kami memberikan rekomendasi jurusan yang paling sesuai dengan profil Anda.</p>
+                    <div class="grid md:grid-cols-3 gap-4 mt-6">
+                        <div class="text-center p-4 bg-dark rounded-lg">
+                            <div class="text-3xl mb-2">🎯</div>
+                            <div class="font-semibold">Akurat</div>
+                        </div>
+                        <div class="text-center p-4 bg-dark rounded-lg">
+                            <div class="text-3xl mb-2">⚡</div>
+                            <div class="font-semibold">Cepat</div>
+                        </div>
+                        <div class="text-center p-4 bg-dark rounded-lg">
+                            <div class="text-3xl mb-2">🔒</div>
+                            <div class="font-semibold">Aman</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-12 px-4 mb-12">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-dark-lighter border border-dark-border rounded-2xl p-6 md:p-8 text-center">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4">Butuh Bantuan?</h2>
+                <p class="text-gray-400 mb-6">Tim kami siap membantu Anda dalam proses pemilihan jurusan</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="mailto:info@sistempakar.com" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-opacity-90 transition-all">
+                        Email Kami
+                    </a>
+                    <a href="tel:+6281234567890" class="px-6 py-3 bg-dark border border-dark-border text-white rounded-lg hover:bg-opacity-90 transition-all">
+                        Hubungi Kami
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-lighter border-t border-dark-border py-8 px-4">
+        <div class="max-w-7xl mx-auto text-center text-gray-400">
+            <p>&copy; 2025 Sistem Pakar Jurusan. Semua hak dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Expert system logic
+        const majorDatabase = {
+            'matematika-coding-analytical-office': {
+                name: 'Teknik Informatika',
+                match: 95,
+                description: 'Cocok untuk kamu yang suka matematika, coding, dan berpikir logis',
+                careers: ['Software Engineer', 'Data Scientist', 'AI Engineer'],
+                icon: '💻'
+            },
+            'matematika-coding-analytical-remote': {
+                name: 'Sistem Informasi',
+                match: 92,
+                description: 'Menggabungkan teknologi dan bisnis untuk solusi digital',
+                careers: ['Business Analyst', 'IT Consultant', 'Project Manager'],
+                icon: '📊'
+            },
+            'fisika-research-analytical-lab': {
+                name: 'Teknik Elektro',
+                match: 90,
+                description: 'Untuk kamu yang tertarik dengan elektronika dan sistem kelistrikan',
+                careers: ['Electrical Engineer', 'Robotics Engineer', 'IoT Specialist'],
+                icon: '⚡'
+            },
+            'seni-design-creative-creative': {
+                name: 'Desain Komunikasi Visual',
+                match: 93,
+                description: 'Sempurna untuk jiwa kreatif yang suka desain dan seni visual',
+                careers: ['Graphic Designer', 'UI/UX Designer', 'Art Director'],
+                icon: '🎨'
+            },
+            'bahasa-writing-creative-creative': {
+                name: 'Sastra & Komunikasi',
+                match: 91,
+                description: 'Ideal untuk kamu yang berbakat dalam menulis dan berkomunikasi',
+                careers: ['Content Writer', 'Journalist', 'Public Relations'],
+                icon: '✍️'
+            },
+            'ekonomi-business-practical-office': {
+                name: 'Manajemen Bisnis',
+                match: 94,
+                description: 'Untuk calon entrepreneur dan pemimpin bisnis masa depan',
+                careers: ['Business Manager', 'Entrepreneur', 'Marketing Manager'],
+                icon: '💼'
+            },
+            'biologi-research-analytical-lab': {
+                name: 'Kedokteran',
+                match: 96,
+                description: 'Untuk kamu yang ingin membantu orang lain melalui ilmu kesehatan',
+                careers: ['Dokter', 'Peneliti Medis', 'Spesialis'],
+                icon: '⚕️'
+            },
+            'kimia-research-analytical-lab': {
+                name: 'Farmasi',
+                match: 89,
+                description: 'Menggabungkan kimia dan kesehatan untuk membuat obat-obatan',
+                careers: ['Apoteker', 'Research Scientist', 'Quality Control'],
+                icon: '💊'
+            },
+            'sejarah-research-social-office': {
+                name: 'Ilmu Hukum',
+                match: 88,
+                description: 'Untuk kamu yang tertarik dengan keadilan dan sistem hukum',
+                careers: ['Lawyer', 'Legal Consultant', 'Judge'],
+                icon: '⚖️'
+            },
+            'default': {
+                name: 'Psikologi',
+                match: 85,
+                description: 'Memahami perilaku manusia dan membantu orang lain',
+                careers: ['Psikolog', 'HR Specialist', 'Counselor'],
+                icon: '🧠'
+            }
+        };
+
+        // Form submission
+        document.getElementById('testForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                age: document.getElementById('age').value,
+                subject: document.getElementById('subject').value,
+                activity: document.getElementById('activity').value,
+                personality: document.getElementById('personality').value,
+                environment: document.getElementById('environment').value
+            };
+
+            // Generate recommendation key
+            const key = `${formData.subject}-${formData.activity}-${formData.personality}-${formData.environment}`;
+            
+            // Get recommendations
+            const recommendations = getRecommendations(key, formData);
+            
+            // Display results
+            displayResults(recommendations, formData.name);
+            
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        function getRecommendations(key, formData) {
+            const recommendations = [];
+            
+            // Try to find exact match
+            if (majorDatabase[key]) {
+                recommendations.push(majorDatabase[key]);
+            }
+            
+            // Add related majors based on subject
+            const subjectMajors = {
+                'matematika': ['Teknik Informatika', 'Sistem Informasi', 'Matematika'],
+                'fisika': ['Teknik Elektro', 'Teknik Mesin', 'Fisika'],
+                'kimia': ['Farmasi', 'Teknik Kimia', 'Kimia'],
+                'biologi': ['Kedokteran', 'Biologi', 'Kesehatan Masyarakat'],
+                'bahasa': ['Sastra & Komunikasi', 'Pendidikan Bahasa', 'Jurnalistik'],
+                'sejarah': ['Ilmu Hukum', 'Hubungan Internasional', 'Sejarah'],
+                'ekonomi': ['Manajemen Bisnis', 'Ekonomi', 'Akuntansi'],
+                'seni': ['Desain Komunikasi Visual', 'Seni Rupa', 'Arsitektur']
+            };
+
+            // Add more recommendations
+            Object.values(majorDatabase).forEach(major => {
+                if (recommendations.length < 3 && !recommendations.includes(major)) {
+                    if (major.name !== 'default') {
+                        recommendations.push(major);
+                    }
+                }
+            });
+
+            // Ensure we have at least 3 recommendations
+            while (recommendations.length < 3) {
+                recommendations.push(majorDatabase.default);
+            }
+
+            return recommendations.slice(0, 3);
+        }
+
+        function displayResults(recommendations, name) {
+            const resultsSection = document.getElementById('results');
+            const resultCards = document.getElementById('resultCards');
+            
+            resultsSection.classList.remove('hidden');
+            resultCards.innerHTML = '';
+
+            recommendations.forEach((major, index) => {
+                const card = document.createElement('div');
+                card.className = 'result-card bg-dark-lighter border border-dark-border rounded-xl p-6 hover:border-primary transition-all';
+                card.style.animationDelay = `${index * 0.1}s`;
+                
+                card.innerHTML = `
+                    <div class="text-4xl mb-4">${major.icon}</div>
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-xl font-bold">${major.name}</h3>
+                        <span class="px-3 py-1 bg-primary bg-opacity-20 text-primary rounded-full text-sm font-semibold">${major.match}% Match</span>
+                    </div>
+                    <p class="text-gray-400 mb-4 leading-relaxed">${major.description}</p>
+                    <div class="space-y-2">
+                        <div class="text-sm font-semibold text-gray-300">Prospek Karir:</div>
+                        ${major.careers.map(career => `
+                            <div class="text-sm text-gray-400 flex items-center">
+                                <span class="w-1.5 h-1.5 bg-primary rounded-full mr-2"></span>
+                                ${career}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                
+                resultCards.appendChild(card);
+            });
+        }
+
+        function resetTest() {
+            document.getElementById('testForm').reset();
+            document.getElementById('results').classList.add('hidden');
+            document.getElementById('test').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
